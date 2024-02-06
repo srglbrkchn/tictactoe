@@ -23,11 +23,25 @@ def next_turn(row, column):
             elif check_winner() == "Tie":
                 label.config(text="Tie")
 
-
-
-
 def check_winner():
-    pass
+    # check all the rows for a win
+    for row in range(3):
+        if buttons[row][0]["text"] == buttons[row][1]["text"] == buttons[row][2]["text"] != "" :
+            return True
+    # check all the columns for a win
+    for column in range(3):
+         if buttons[0][column]["text"] == buttons[1][column]["text"] == buttons[2][column]["text"] != "":
+            return True
+    # check diagonal win conditions
+    if buttons[0][0]["text"] == buttons[1][1]["text"] == buttons[2][2]["text"] != "":
+        return True
+    elif buttons[0][2]["text"] == buttons[1][1]["text"] == buttons[2][0]["text"] != "":
+        return True
+    elif empty_spaces() is False:
+        return "Tie"
+    else:
+        return False
+
 
 def empty_spaces():
     pass
