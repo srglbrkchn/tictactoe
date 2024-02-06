@@ -72,7 +72,13 @@ def empty_spaces():
         return True
 
 def new_game():
-    pass
+    global player
+    player = random.choice(players)
+    label.config(text=player + " turn" )
+    for row in range(3):
+        for column in range(3):
+            buttons[row][column].config(text="", fg="#000")
+    label.config(fg="#fff")
 
 window = Tk()
 window.title("Tic-Tac-Toe")
